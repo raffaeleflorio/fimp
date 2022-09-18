@@ -19,7 +19,7 @@ class UniqueTextTest {
   @Test
   void shouldFilterOut_Duplicate_Tokens() {
     assertThat(
-      new UniqueText(new Text.Fake("single", "token", "token", "single")).tokens()
-    ).containsExactly("single", "token");
+      new UniqueText(new Text.Fake("single", "token", "token", "a", "single")).tokens()
+    ).containsExactlyInAnyOrder("a", "single", "token");
   }
 }
