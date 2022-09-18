@@ -2,7 +2,7 @@ package io.github.raffaeleflorio.fimp.whitespace;
 
 import io.github.raffaeleflorio.fimp.Text;
 import io.github.raffaeleflorio.fimp.Tokens;
-import io.github.raffaeleflorio.fimp.split.SplittedText;
+import io.github.raffaeleflorio.fimp.split.SplitText;
 
 import java.util.regex.Pattern;
 
@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
  */
-public final class WhitespacedText implements Text {
+public final class WhitespaceText implements Text {
 
   private final Text origin;
 
@@ -21,11 +21,11 @@ public final class WhitespacedText implements Text {
    *
    * @param text The text
    */
-  public WhitespacedText(final CharSequence text) {
-    this(new SplittedText(text, Pattern.compile("\\s+")));
+  public WhitespaceText(final CharSequence text) {
+    this(new SplitText(text, Pattern.compile("\\s+")));
   }
 
-  WhitespacedText(final Text origin) {
+  WhitespaceText(final Text origin) {
     this.origin = origin;
   }
 

@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
  */
-public final class SplittedText implements Text {
+public final class SplitText implements Text {
 
   private final CharSequence text;
   private final Pattern pattern;
@@ -25,11 +25,11 @@ public final class SplittedText implements Text {
    * @param text    The text
    * @param pattern The pattern
    */
-  public SplittedText(final CharSequence text, final Pattern pattern) {
+  public SplitText(final CharSequence text, final Pattern pattern) {
     this(text, pattern, ConstTokens::new);
   }
 
-  SplittedText(final CharSequence text, final Pattern pattern, final Function<CharSequence[], Tokens> tokensFn) {
+  SplitText(final CharSequence text, final Pattern pattern, final Function<CharSequence[], Tokens> tokensFn) {
     this.text = text;
     this.pattern = pattern;
     this.tokensFn = tokensFn;
