@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.function.Function;
 
 /**
- * A lowercase text
+ * A text with lowercase tokens
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -52,6 +52,6 @@ public final class LowercaseText implements Text {
 
   @Override
   public String asString() {
-    return this.origin.asString().toLowerCase(this.locale);
+    return this.origin.asString();
   }
 }

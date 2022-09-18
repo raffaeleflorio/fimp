@@ -9,12 +9,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LowercaseTextTest {
 
   @Test
-  void shouldLowercase_Its_String_Representation() {
+  void shouldNotMutate_Its_String_Representation() {
+    var expected = "THIS IS UPPERCASE, more OR lESS";
     assertThat(
       new LowercaseText(
-        new Text.Fake(new Tokens.Fake(), "THIS IS UPPERCASE, more OR lESS")
+        new Text.Fake(new Tokens.Fake(), expected)
       ).asString()
-    ).isEqualTo("this is uppercase, more or less");
+    ).isEqualTo(expected);
   }
 
   @Test
