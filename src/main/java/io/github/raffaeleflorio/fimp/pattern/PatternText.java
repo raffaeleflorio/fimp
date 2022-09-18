@@ -1,4 +1,4 @@
-package io.github.raffaeleflorio.fimp.split;
+package io.github.raffaeleflorio.fimp.pattern;
 
 import io.github.raffaeleflorio.fimp.Text;
 import io.github.raffaeleflorio.fimp.Tokens;
@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
  */
-public final class SplitText implements Text {
+public final class PatternText implements Text {
 
   private final String text;
   private final Pattern pattern;
@@ -25,11 +25,11 @@ public final class SplitText implements Text {
    * @param text    The text
    * @param pattern The pattern
    */
-  public SplitText(final String text, final Pattern pattern) {
+  public PatternText(final String text, final Pattern pattern) {
     this(text, pattern, ConstTokens::new);
   }
 
-  SplitText(final String text, final Pattern pattern, final Function<String[], Tokens> tokensFn) {
+  PatternText(final String text, final Pattern pattern, final Function<String[], Tokens> tokensFn) {
     this.text = text;
     this.pattern = pattern;
     this.tokensFn = tokensFn;
