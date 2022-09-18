@@ -15,30 +15,30 @@ import java.util.stream.Stream;
  */
 public final class ConstTokens implements Tokens {
 
-  private final CharSequence[] tokens;
-  private final Function<CharSequence[], Stream<CharSequence>> streamFn;
+  private final String[] tokens;
+  private final Function<String[], Stream<String>> streamFn;
 
   /**
    * Builds tokens
    *
    * @param tokens The tokens
    */
-  public ConstTokens(final CharSequence[] tokens) {
+  public ConstTokens(final String[] tokens) {
     this(tokens, Arrays::stream);
   }
 
-  ConstTokens(final CharSequence[] tokens, final Function<CharSequence[], Stream<CharSequence>> streamFn) {
+  ConstTokens(final String[] tokens, final Function<String[], Stream<String>> streamFn) {
     this.tokens = tokens;
     this.streamFn = streamFn;
   }
 
   @Override
-  public Stream<CharSequence> stream() {
-    return this.streamFn.apply(this.tokens).distinct();
+  public Stream<String> stream() {
+    return this.streamFn.apply(this.tokens);
   }
 
   @Override
-  public Iterator<CharSequence> iterator() {
+  public Iterator<String> iterator() {
     return this.stream().iterator();
   }
 }

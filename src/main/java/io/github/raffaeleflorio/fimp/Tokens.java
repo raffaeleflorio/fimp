@@ -1,23 +1,24 @@
 package io.github.raffaeleflorio.fimp;
 
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Set of token
+ * Group of tokens
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
  */
-public interface Tokens extends Iterable<CharSequence> {
+public interface Tokens extends Iterable<String> {
 
   /**
-   * Builds its stream of tokens
+   * Streams the tokens
    *
-   * @return Its stream
+   * @return The stream
    */
-  Stream<CharSequence> stream();
+  Stream<String> stream();
 
   /**
    * Tokens useful for testing purpose
@@ -27,7 +28,7 @@ public interface Tokens extends Iterable<CharSequence> {
    */
   final class Fake implements Tokens {
 
-    private final Set<CharSequence> tokens;
+    private final Collection<String> tokens;
 
     /**
      * Builds a fake using an array
@@ -35,25 +36,25 @@ public interface Tokens extends Iterable<CharSequence> {
      * @param tokens The tokens
      */
     public Fake(final String... tokens) {
-      this(Set.of(tokens));
+      this(List.of(tokens));
     }
 
     /**
-     * Builds a fake using a set
+     * Builds a fake using a list
      *
      * @param tokens The set
      */
-    public Fake(final Set<CharSequence> tokens) {
+    public Fake(final List<String> tokens) {
       this.tokens = tokens;
     }
 
     @Override
-    public Stream<CharSequence> stream() {
+    public Stream<String> stream() {
       return this.tokens.stream();
     }
 
     @Override
-    public Iterator<CharSequence> iterator() {
+    public Iterator<String> iterator() {
       return this.tokens.iterator();
     }
   }

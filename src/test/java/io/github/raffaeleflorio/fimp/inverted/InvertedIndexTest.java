@@ -124,16 +124,16 @@ class InvertedIndexTest {
   @Test
   void shouldFind_ACorrectTextOfAnIndexedDocument_ByItsId() {
     var index = new InvertedIndex();
-    var text = "first second";
+    var expected = "first second";
     assertThat(
       index.document(
         index.document(
           new Text.Fake(
             new Tokens.Fake("first", "second"),
-            text
+            expected
           )
         ).id()
-      ).map(Document::text).map(Text::asCharSequence)
-    ).contains(text);
+      ).map(Document::text).map(Text::asString)
+    ).contains(expected);
   }
 }

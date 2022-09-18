@@ -17,12 +17,7 @@ public interface Text {
    */
   Tokens tokens();
 
-  /**
-   * Builds its char sequence representation
-   *
-   * @return Its charsequence representation
-   */
-  CharSequence asCharSequence();
+  String asString();
 
   /**
    * A text useful for testing
@@ -33,7 +28,7 @@ public interface Text {
   final class Fake implements Text {
 
     private final Tokens tokens;
-    private final CharSequence charSequence;
+    private final String string;
 
     /**
      * Builds a random fake
@@ -42,9 +37,8 @@ public interface Text {
       this(UUID.randomUUID().toString());
     }
 
-
     /**
-     * Builds a fake with a random char sequence representation, but with given its tokens
+     * Builds a fake with a random string representation, but with given tokens
      *
      * @param tokens The tokens
      */
@@ -53,14 +47,14 @@ public interface Text {
     }
 
     /**
-     * Builds a fake with given tokens and char sequence representation
+     * Builds a fake with given tokens and string representation
      *
-     * @param tokens       The tokens
-     * @param charSequence The char sequence representation
+     * @param tokens The tokens
+     * @param string The string representation
      */
-    public Fake(final Tokens tokens, final CharSequence charSequence) {
+    public Fake(final Tokens tokens, final String string) {
       this.tokens = tokens;
-      this.charSequence = charSequence;
+      this.string = string;
     }
 
     @Override
@@ -69,8 +63,8 @@ public interface Text {
     }
 
     @Override
-    public CharSequence asCharSequence() {
-      return this.charSequence;
+    public String asString() {
+      return this.string;
     }
   }
 }

@@ -7,7 +7,7 @@ import io.github.raffaeleflorio.fimp.split.SplitText;
 import java.util.regex.Pattern;
 
 /**
- * A text which distinguishes its tokens according whitespaces
+ * A text separating its tokens according whitespaces
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -21,7 +21,7 @@ public final class WhitespaceText implements Text {
    *
    * @param text The text
    */
-  public WhitespaceText(final CharSequence text) {
+  public WhitespaceText(final String text) {
     this(new SplitText(text, Pattern.compile("\\s+")));
   }
 
@@ -35,7 +35,7 @@ public final class WhitespaceText implements Text {
   }
 
   @Override
-  public CharSequence asCharSequence() {
-    return this.origin.asCharSequence();
+  public String asString() {
+    return this.origin.asString();
   }
 }

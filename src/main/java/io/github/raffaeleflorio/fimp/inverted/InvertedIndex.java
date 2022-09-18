@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public final class InvertedIndex implements Index {
 
   private final ConcurrentMap<UUID, Document> documentsMap;
-  private final ConcurrentMultiValueMap<CharSequence, UUID> tokensMap;
+  private final ConcurrentMultiValueMap<String, UUID> tokensMap;
   private final Supplier<UUID> idSupplier;
   private final BiFunction<UUID, Text, Document> documentFn;
   private final Function<Set<Document>, Documents> documentsFn;
@@ -52,7 +52,7 @@ public final class InvertedIndex implements Index {
 
   InvertedIndex(
     final ConcurrentMap<UUID, Document> documentsMap,
-    final ConcurrentMultiValueMap<CharSequence, UUID> tokensMap,
+    final ConcurrentMultiValueMap<String, UUID> tokensMap,
     final Supplier<UUID> idSupplier,
     final BiFunction<UUID, Text, Document> documentFn,
     final Function<Set<Document>, Documents> documentsFn
@@ -66,11 +66,10 @@ public final class InvertedIndex implements Index {
 
   @Override
   public Document document(final Text text) {
-    var id = this.idSupplier.get();
-    var document = this.documentFn.apply(id, text);
-    this.documentsMap.put(id, document);
-    text.tokens().forEach(token -> this.tokensMap.add(token, id));
-    return document;
+    var result = this.documentFn.apply(this.idSupplier.get(), text);
+    this.documentsMap.put(result.id(), result);
+    text.tokens().forEach(token -> this.tokensMap.add(token, result.id()));
+    return result;
   }
 
   @Override

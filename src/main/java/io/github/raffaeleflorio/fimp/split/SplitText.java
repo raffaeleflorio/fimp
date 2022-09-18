@@ -15,9 +15,9 @@ import java.util.regex.Pattern;
  */
 public final class SplitText implements Text {
 
-  private final CharSequence text;
+  private final String text;
   private final Pattern pattern;
-  private final Function<CharSequence[], Tokens> tokensFn;
+  private final Function<String[], Tokens> tokensFn;
 
   /**
    * Builds a text
@@ -25,11 +25,11 @@ public final class SplitText implements Text {
    * @param text    The text
    * @param pattern The pattern
    */
-  public SplitText(final CharSequence text, final Pattern pattern) {
+  public SplitText(final String text, final Pattern pattern) {
     this(text, pattern, ConstTokens::new);
   }
 
-  SplitText(final CharSequence text, final Pattern pattern, final Function<CharSequence[], Tokens> tokensFn) {
+  SplitText(final String text, final Pattern pattern, final Function<String[], Tokens> tokensFn) {
     this.text = text;
     this.pattern = pattern;
     this.tokensFn = tokensFn;
@@ -43,7 +43,7 @@ public final class SplitText implements Text {
   }
 
   @Override
-  public CharSequence asCharSequence() {
+  public String asString() {
     return this.text;
   }
 }

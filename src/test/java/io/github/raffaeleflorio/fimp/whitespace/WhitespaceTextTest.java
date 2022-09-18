@@ -7,10 +7,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WhitespaceTextTest {
 
   @Test
-  void shouldNotMutate_Its_CharSequence_Representation() {
+  void shouldNotMutate_Its_String_Representation() {
     var expected = "This text shouldn't mutate.";
     assertThat(
-      new WhitespaceText(expected).asCharSequence()
+      new WhitespaceText(expected).asString()
     ).isEqualTo(expected);
   }
 
