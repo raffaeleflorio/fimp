@@ -25,6 +25,16 @@ public final class PatternText implements Text {
    * @param text    The text
    * @param pattern The pattern
    */
+  public PatternText(final String text, final String pattern) {
+    this(text, Pattern.compile(pattern));
+  }
+
+  /**
+   * Builds a text
+   *
+   * @param text    The text
+   * @param pattern The pattern
+   */
   public PatternText(final String text, final Pattern pattern) {
     this(text, pattern, ConstTokens::new);
   }
