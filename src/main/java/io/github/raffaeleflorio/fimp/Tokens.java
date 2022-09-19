@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Group of tokens
+ * Group of tokens, where a token is an atomic human-readable object (e.g. word)
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -31,7 +31,7 @@ public interface Tokens extends Iterable<String> {
     private final Collection<String> tokens;
 
     /**
-     * Builds a fake using an array
+     * Builds a fake using an array of tokens
      *
      * @param tokens The tokens
      */
@@ -40,11 +40,11 @@ public interface Tokens extends Iterable<String> {
     }
 
     /**
-     * Builds a fake using a list
+     * Builds a fake using a collection of tokens
      *
      * @param tokens The set
      */
-    public Fake(final List<String> tokens) {
+    public Fake(final Collection<String> tokens) {
       this.tokens = tokens;
     }
 

@@ -3,7 +3,7 @@ package io.github.raffaeleflorio.fimp;
 import java.util.UUID;
 
 /**
- * A text
+ * A text is a human-readable object which shapes itself around identification tokens (e.g. words)
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -11,12 +11,17 @@ import java.util.UUID;
 public interface Text {
 
   /**
-   * Builds its tokens
+   * Provides its tokens
    *
-   * @return Its tokens
+   * @return The tokens
    */
   Tokens tokens();
 
+  /**
+   * Provides its human-readable representation
+   *
+   * @return The representation
+   */
   String asString();
 
   /**
@@ -38,7 +43,7 @@ public interface Text {
     }
 
     /**
-     * Builds a fake with a random string representation, but with given tokens
+     * Builds a fake with a random human-readable representation, but with given tokens
      *
      * @param tokens The tokens
      */
@@ -47,10 +52,10 @@ public interface Text {
     }
 
     /**
-     * Builds a fake with given tokens and string representation
+     * Builds a fake with given tokens and human-readable representation
      *
      * @param tokens The tokens
-     * @param string The string representation
+     * @param string The human-readable representation
      */
     public Fake(final Tokens tokens, final String string) {
       this.tokens = tokens;

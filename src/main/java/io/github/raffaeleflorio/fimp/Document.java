@@ -3,7 +3,7 @@ package io.github.raffaeleflorio.fimp;
 import java.util.UUID;
 
 /**
- * A text identified by an id
+ * A text identified by an unique id
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -11,16 +11,16 @@ import java.util.UUID;
 public interface Document {
 
   /**
-   * Builds its text representation
+   * Provides its text representation
    *
-   * @return The text
+   * @return The representation
    */
   Text text();
 
   /**
-   * Builds its id
+   * Provides its id
    *
-   * @return Its id
+   * @return The id
    */
   UUID id();
 }
