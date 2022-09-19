@@ -35,7 +35,7 @@ public final class InvertedIndex implements Index {
   private final Function<Set<Document>, Documents> documentsFn;
 
   /**
-   * Builds an inverted index
+   * Builds an empty inverted index
    *
    * @author Raffaele Florio (raffaeleflorio@protonmail.com)
    * @since 1.0.0
@@ -81,7 +81,7 @@ public final class InvertedIndex implements Index {
   public Documents documents(final Text text) {
     return this.documentsFn.apply(
       text.tokens().stream()
-        .map(this.tokensMap::get)
+        .map(this.tokensMap::values)
         .flatMap(Set::stream)
         .map(this.documentsMap::get)
         .collect(Collectors.toUnmodifiableSet())

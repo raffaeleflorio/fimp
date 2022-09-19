@@ -20,19 +20,19 @@ public final class PatternText implements Text {
   private final Function<String[], Tokens> tokensFn;
 
   /**
-   * Builds a text
+   * Builds a pattern text
    *
-   * @param text    The text
-   * @param pattern The pattern
+   * @param text    The human-readable representation
+   * @param pattern The pattern separating the tokens
    */
   public PatternText(final String text, final String pattern) {
     this(text, Pattern.compile(pattern));
   }
 
   /**
-   * Builds a text
+   * Builds a pattern text
    *
-   * @param text    The text
+   * @param text    The human-readable representation
    * @param pattern The pattern
    */
   public PatternText(final String text, final Pattern pattern) {

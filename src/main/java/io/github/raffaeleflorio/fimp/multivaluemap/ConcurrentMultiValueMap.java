@@ -21,15 +21,15 @@ public interface ConcurrentMultiValueMap<K, V> {
   void add(K key, V value);
 
   /**
-   * Gets the values associated to a key or an empty set
+   * Provides the values associated to a key or an empty set
    *
    * @param key The key
-   * @return Values as an immutable set
+   * @return The values as an immutable set
    */
-  Set<V> get(K key);
+  Set<V> values(K key);
 
   /**
-   * Removes a value associated to any key
+   * Removes a value from any associated key
    *
    * @param value The value to remove
    */

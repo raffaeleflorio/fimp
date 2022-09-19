@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.function.Function;
 
 /**
- * A text with lowercase tokens
+ * A text with all tokens lowercase
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -15,31 +15,30 @@ import java.util.function.Function;
 public final class LowercaseText implements Text {
 
   private final Text origin;
-  private final Locale locale;
   private final Function<Tokens, Tokens> lowercaseTokensFn;
 
   /**
-   * Builds lowercase text in a default locale
+   * Builds a lowercase text using the rules in the default locale
    *
    * @param origin The text
+   * @see Locale#getDefault()
    */
   public LowercaseText(final Text origin) {
     this(origin, Locale.getDefault());
   }
 
   /**
-   * Builds lowercase localised text
+   * Builds a lowercase text using the rules in the given locale
    *
    * @param origin The text
    * @param locale The locale
    */
   public LowercaseText(final Text origin, final Locale locale) {
-    this(origin, locale, tokens -> new LowercaseTokens(tokens, locale));
+    this(origin, tokens -> new LowercaseTokens(tokens, locale));
   }
 
-  LowercaseText(final Text origin, final Locale locale, final Function<Tokens, Tokens> lowercaseTokensFn) {
+  LowercaseText(final Text origin, final Function<Tokens, Tokens> lowercaseTokensFn) {
     this.origin = origin;
-    this.locale = locale;
     this.lowercaseTokensFn = lowercaseTokensFn;
   }
 

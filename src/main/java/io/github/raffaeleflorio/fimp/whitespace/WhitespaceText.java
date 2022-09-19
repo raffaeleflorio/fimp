@@ -17,9 +17,9 @@ public final class WhitespaceText implements Text {
   private final Text origin;
 
   /**
-   * Builds a text
+   * Builds a whitespace text
    *
-   * @param text The text
+   * @param text The human-readable representation
    */
   public WhitespaceText(final String text) {
     this(new PatternText(text, Pattern.compile("\\s+")));

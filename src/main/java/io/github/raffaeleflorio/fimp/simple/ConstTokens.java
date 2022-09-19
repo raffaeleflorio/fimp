@@ -21,7 +21,7 @@ public final class ConstTokens implements Tokens {
   /**
    * Builds tokens
    *
-   * @param tokens The tokens
+   * @param tokens The human-readable tokens
    */
   public ConstTokens(final String[] tokens) {
     this(tokens, Arrays::stream);

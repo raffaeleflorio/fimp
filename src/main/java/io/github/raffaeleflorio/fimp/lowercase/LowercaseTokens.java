@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.stream.Stream;
 
 /**
- * Lowercase group of tokens
+ * Group of lowercase tokens
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -19,7 +19,7 @@ public final class LowercaseTokens implements Tokens {
 
 
   /**
-   * Builds localised lowercase tokens
+   * Builds lowercase tokens using the rules in the given locale
    *
    * @param origin The tokens
    * @param locale The locale

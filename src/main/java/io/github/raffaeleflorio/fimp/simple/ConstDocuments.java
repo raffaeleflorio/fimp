@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * A constant implementation of a set of documents
+ * An immutable implementation of documents
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0

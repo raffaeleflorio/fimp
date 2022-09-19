@@ -6,7 +6,7 @@ import io.github.raffaeleflorio.fimp.Text;
 import java.util.UUID;
 
 /**
- * A constant implementation of a document
+ * An immutable implementation of document
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -19,8 +19,8 @@ public final class ConstDocument implements Document {
   /**
    * Builds a document
    *
-   * @param id   The document id
-   * @param text The document text
+   * @param id   The id
+   * @param text The text
    */
   public ConstDocument(final UUID id, final Text text) {
     this.id = id;

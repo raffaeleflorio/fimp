@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * A concurrent multi value map implemented using only JDK classes
+ * An JDK implementation of a concurrent multi value map
  *
  * @param <K> The key type
  * @param <V> The values type
@@ -55,7 +55,7 @@ public final class JdkConcurrentMultiValueMap<K, V> implements ConcurrentMultiVa
   }
 
   @Override
-  public Set<V> get(final K key) {
+  public Set<V> values(final K key) {
     var result = this.map.containsKey(key) ? this.map.get(key) : this.emptySetSupplier.get();
     return this.immutableFn.apply(result);
   }
