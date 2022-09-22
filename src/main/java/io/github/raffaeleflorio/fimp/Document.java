@@ -44,6 +44,22 @@ public interface Document {
     private final Text text;
 
     /**
+     * Builds a random fake
+     */
+    public Fake() {
+      this(UUID.randomUUID());
+    }
+
+    /**
+     * Builds a document with a random text
+     *
+     * @param id The id
+     */
+    public Fake(final UUID id) {
+      this(id, new Text.Fake());
+    }
+
+    /**
      * Builds a fake
      *
      * @param id   The id

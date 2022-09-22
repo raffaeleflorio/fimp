@@ -3,8 +3,8 @@ package io.github.raffaeleflorio.fimp.simple;
 import io.github.raffaeleflorio.fimp.Document;
 import io.github.raffaeleflorio.fimp.Documents;
 
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
 
 /**
  * An immutable implementation of documents
@@ -14,14 +14,14 @@ import java.util.Set;
  */
 public final class ConstDocuments implements Documents {
 
-  private final Set<Document> documents;
+  private final Collection<Document> documents;
 
   /**
    * Builds documents
    *
    * @param documents The documents
    */
-  public ConstDocuments(final Set<Document> documents) {
+  public ConstDocuments(final Collection<Document> documents) {
     this.documents = documents;
   }
 

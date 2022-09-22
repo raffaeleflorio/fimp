@@ -1,7 +1,7 @@
 package io.github.raffaeleflorio.fimp;
 
 /**
- * A set of {@link Document}
+ * A group of {@link Document}
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
