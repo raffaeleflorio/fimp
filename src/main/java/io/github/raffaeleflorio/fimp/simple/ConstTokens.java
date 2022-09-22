@@ -33,12 +33,12 @@ public final class ConstTokens implements Tokens {
   }
 
   @Override
-  public Stream<String> stream() {
-    return this.streamFn.apply(this.tokens);
+  public Iterator<String> iterator() {
+    return this.stream().iterator();
   }
 
   @Override
-  public Iterator<String> iterator() {
-    return this.stream().iterator();
+  public Stream<String> stream() {
+    return this.streamFn.apply(this.tokens);
   }
 }
