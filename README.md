@@ -22,12 +22,16 @@ public final class Examples {
     texts.index(text("A TEXT TO INDEX, it could be anything!"));
     texts.index(text("Another stuff to index"));
     texts.index(text("This will not be found."));
+    texts.index(
+      texts.index(text("OLD")).with(text("updated that will match"))
+    );
 
     for (var document : texts.documents(query("TExT to SeArCh, it shouldn't match 1:1"))) {
       System.out.println(document.text().asString());
     }
     // => A TEXT TO INDEX, it could be anything!
     // => Another stuff to index
+    // => updated that will match
   }
 
   private static Text text(final String text) {
