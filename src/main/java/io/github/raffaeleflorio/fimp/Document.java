@@ -18,6 +18,14 @@ public interface Document {
   Text text();
 
   /**
+   * Updates its text representation by building a new Document
+   *
+   * @param text The text representation
+   * @return The new document
+   */
+  Document with(Text text);
+
+  /**
    * Provides its id
    *
    * @return The id
@@ -49,6 +57,11 @@ public interface Document {
     @Override
     public Text text() {
       return this.text;
+    }
+
+    @Override
+    public Document with(final Text text) {
+      return new Fake(this.id, text);
     }
 
     @Override

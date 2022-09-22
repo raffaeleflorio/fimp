@@ -33,6 +33,11 @@ public final class ConstDocument implements Document {
   }
 
   @Override
+  public Document with(final Text text) {
+    return new ConstDocument(this.id, text);
+  }
+
+  @Override
   public UUID id() {
     return this.id;
   }
