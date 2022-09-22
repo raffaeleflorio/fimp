@@ -5,6 +5,7 @@ import io.github.raffaeleflorio.fimp.Documents;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.stream.Stream;
 
 /**
  * An immutable implementation of documents
@@ -27,6 +28,11 @@ public final class ConstDocuments implements Documents {
 
   @Override
   public Iterator<Document> iterator() {
-    return this.documents.stream().iterator();
+    return this.stream().iterator();
+  }
+
+  @Override
+  public Stream<Document> stream() {
+    return this.documents.stream();
   }
 }

@@ -1,5 +1,7 @@
 package io.github.raffaeleflorio.fimp;
 
+import java.util.stream.Stream;
+
 /**
  * A group of {@link Document}
  *
@@ -7,4 +9,11 @@ package io.github.raffaeleflorio.fimp;
  * @since 1.0.0
  */
 public interface Documents extends Iterable<Document> {
+
+  /**
+   * Streams its documents
+   *
+   * @return The stream
+   */
+  Stream<Document> stream();
 }
