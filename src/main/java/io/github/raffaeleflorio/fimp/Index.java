@@ -13,12 +13,12 @@ import java.util.UUID;
 public interface Index {
 
   /**
-   * Indexes a document given a text
+   * Indexes a text
    *
    * @param text The text
    * @return The indexed document
    */
-  Document document(Text text);
+  Document index(Text text);
 
   /**
    * Provides an indexed document given its id

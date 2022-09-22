@@ -18,12 +18,12 @@ import io.github.raffaeleflorio.fimp.whitespace.WhitespaceText;
 public final class Examples {
 
   public static void main(final String[] args) {
-    var index = new InvertedIndex();
-    index.document(text("A TEXT TO INDEX, it could be anything!"));
-    index.document(text("Another stuff to index"));
-    index.document(text("This will not be found."));
+    var texts = new InvertedIndex();
+    texts.index(text("A TEXT TO INDEX, it could be anything!"));
+    texts.index(text("Another stuff to index"));
+    texts.index(text("This will not be found."));
 
-    for (var document : index.documents(text("TExT to SeArCh, it shouldn't match 1:1"))) {
+    for (var document : texts.documents(query("TExT to SeArCh, it shouldn't match 1:1"))) {
       System.out.println(document.text().asString());
     }
     // => A TEXT TO INDEX, it could be anything!
@@ -36,6 +36,10 @@ public final class Examples {
         new WhitespaceText(text)
       )
     );
+  }
+
+  private static Text query(final String text) {
+    return text(text);
   }
 }
 ```

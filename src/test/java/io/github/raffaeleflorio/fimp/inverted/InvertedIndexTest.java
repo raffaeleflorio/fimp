@@ -27,7 +27,7 @@ class InvertedIndexTest {
     var index = new InvertedIndex();
     assertThat(
       index.document(
-        index.document(new Text.Fake()).id()
+        index.index(new Text.Fake()).id()
       )
     ).isNotEmpty();
   }
@@ -37,7 +37,7 @@ class InvertedIndexTest {
     var index = new InvertedIndex();
     assertThat(
       index.documents(
-        index.document(new Text.Fake("these", "are", "tokens")).text()
+        index.index(new Text.Fake("these", "are", "tokens")).text()
       )
     ).isNotEmpty();
   }
@@ -45,7 +45,7 @@ class InvertedIndexTest {
   @Test
   void shouldFind_AnIndexedDocument_ByItsPartialText() {
     var index = new InvertedIndex();
-    index.document(new Text.Fake("document", "tokens"));
+    index.index(new Text.Fake("document", "tokens"));
     assertThat(
       index.documents(new Text.Fake("partial", "tokens", "match"))
     ).isNotEmpty();
@@ -54,7 +54,7 @@ class InvertedIndexTest {
   @Test
   void shouldFind_AnIndexedDocument_BySingleToken() {
     var index = new InvertedIndex();
-    index.document(new Text.Fake("these", "are", "few", "tokens", "but", "only", "one", "will", "match"));
+    index.index(new Text.Fake("these", "are", "few", "tokens", "but", "only", "one", "will", "match"));
     assertThat(
       index.documents(new Text.Fake("one"))
     ).isNotEmpty();
@@ -63,7 +63,7 @@ class InvertedIndexTest {
   @Test
   void shouldNotFind_AnUnindexedDocument_ByOtherText() {
     var index = new InvertedIndex();
-    index.document(new Text.Fake("the", "answer"));
+    index.index(new Text.Fake("the", "answer"));
     assertThat(
       index.documents(
         new Text.Fake("42")
@@ -74,7 +74,7 @@ class InvertedIndexTest {
   @Test
   void shouldNotFind_AnUnindexedDocument_ByOtherId() {
     var index = new InvertedIndex();
-    index.document(new Text.Fake());
+    index.index(new Text.Fake());
     assertThat(
       index.document(this.aDocumentId())
     ).isEmpty();
@@ -83,7 +83,7 @@ class InvertedIndexTest {
   @Test
   void shouldNotFind_AnIndexedDocument_ByItsId_AfterDeletion() {
     var index = new InvertedIndex();
-    var document = index.document(new Text.Fake());
+    var document = index.index(new Text.Fake());
     index.delete(document.id());
     assertThat(
       index.document(document.id())
@@ -93,7 +93,7 @@ class InvertedIndexTest {
   @Test
   void shouldNotFind_AnIndexedDocument_ByItsText_AfterDeletion() {
     var index = new InvertedIndex();
-    var document = index.document(new Text.Fake());
+    var document = index.index(new Text.Fake());
     index.delete(document.id());
     assertThat(
       index.documents(document.text())
@@ -103,9 +103,9 @@ class InvertedIndexTest {
   @Test
   void shouldFind_OneDocument_BetweenMany() {
     var index = new InvertedIndex();
-    index.document(new Text.Fake("good"));
-    index.document(new Text.Fake("bad"));
-    index.document(new Text.Fake("ugly"));
+    index.index(new Text.Fake("good"));
+    index.index(new Text.Fake("bad"));
+    index.index(new Text.Fake("ugly"));
     assertThat(
       index.documents(new Text.Fake("good"))
     ).hasSize(1);
@@ -114,10 +114,10 @@ class InvertedIndexTest {
   @Test
   void shouldEstimate_Size_According_IndexedDocuments() {
     var index = new InvertedIndex();
-    index.document(new Text.Fake("first"));
-    index.document(new Text.Fake("second"));
-    index.document(new Text.Fake("third"));
-    index.document(new Text.Fake("fourth"));
+    index.index(new Text.Fake("first"));
+    index.index(new Text.Fake("second"));
+    index.index(new Text.Fake("third"));
+    index.index(new Text.Fake("fourth"));
     assertThat(index.size()).isEqualTo(4L);
   }
 
@@ -127,7 +127,7 @@ class InvertedIndexTest {
     var expected = "first second";
     assertThat(
       index.document(
-        index.document(
+        index.index(
           new Text.Fake(
             new Tokens.Fake("first", "second"),
             expected
