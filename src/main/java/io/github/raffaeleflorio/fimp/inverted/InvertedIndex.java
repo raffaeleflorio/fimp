@@ -9,6 +9,7 @@ import io.github.raffaeleflorio.fimp.multivaluemap.JdkConcurrentMultiValueMap;
 import io.github.raffaeleflorio.fimp.simple.ConstDocument;
 import io.github.raffaeleflorio.fimp.simple.ConstDocuments;
 
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -32,13 +33,10 @@ public final class InvertedIndex implements Index {
   private final ConcurrentMultiValueMap<String, UUID> tokensMap;
   private final Supplier<UUID> idSupplier;
   private final BiFunction<UUID, Text, Document> documentFn;
-  private final Function<Set<Document>, Documents> documentsFn;
+  private final Function<Collection<Document>, Documents> documentsFn;
 
   /**
    * Builds an empty inverted index
-   *
-   * @author Raffaele Florio (raffaeleflorio@protonmail.com)
-   * @since 1.0.0
    */
   public InvertedIndex() {
     this(
@@ -55,7 +53,7 @@ public final class InvertedIndex implements Index {
     final ConcurrentMultiValueMap<String, UUID> tokensMap,
     final Supplier<UUID> idSupplier,
     final BiFunction<UUID, Text, Document> documentFn,
-    final Function<Set<Document>, Documents> documentsFn
+    final Function<Collection<Document>, Documents> documentsFn
   ) {
     this.documentsMap = documentsMap;
     this.tokensMap = tokensMap;
