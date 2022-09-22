@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.function.Function;
 
 /**
- * A text with all tokens lowercase
+ * A text with lowercase tokens
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0

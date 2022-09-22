@@ -3,7 +3,7 @@ package io.github.raffaeleflorio.fimp;
 import java.util.UUID;
 
 /**
- * A text is a human-readable object which shapes itself around identification tokens (e.g. words)
+ * A text identifies itself around tokens (e.g. words) and that could provide a human-readable representation
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
  * @since 1.0.0
@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface Text {
 
   /**
-   * Provides its tokens
+   * Provides its identification tokens
    *
    * @return The tokens
    */
