@@ -40,6 +40,6 @@ public final class Examples {
 }
 ```
 
-# REST interface
+# Demo
 
-A REST interface is available [in this Quarkus project](TODO)
+WIP
