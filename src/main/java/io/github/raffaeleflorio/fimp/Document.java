@@ -23,4 +23,37 @@ public interface Document {
    * @return The id
    */
   UUID id();
+
+  /**
+   * A fake useful for testing
+   *
+   * @author Raffaele Florio (raffaeleflorio@protonmail.com)
+   * @since 1.0.0
+   */
+  final class Fake implements Document {
+
+    private final UUID id;
+    private final Text text;
+
+    /**
+     * Builds a fake
+     *
+     * @param id   The id
+     * @param text The text
+     */
+    public Fake(final UUID id, final Text text) {
+      this.id = id;
+      this.text = text;
+    }
+
+    @Override
+    public Text text() {
+      return this.text;
+    }
+
+    @Override
+    public UUID id() {
+      return this.id;
+    }
+  }
 }

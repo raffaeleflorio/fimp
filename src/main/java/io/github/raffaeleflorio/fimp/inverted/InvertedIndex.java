@@ -66,10 +66,15 @@ public final class InvertedIndex implements Index {
 
   @Override
   public Document index(final Text text) {
-    var result = this.documentFn.apply(this.idSupplier.get(), text);
-    this.documentsMap.put(result.id(), result);
-    text.tokens().forEach(token -> this.tokensMap.add(token, result.id()));
-    return result;
+    return this.index(this.documentFn.apply(this.idSupplier.get(), text));
+  }
+
+  @Override
+  public Document index(final Document document) {
+    this.delete(document.id());
+    this.documentsMap.put(document.id(), document);
+    document.text().tokens().forEach(token -> this.tokensMap.add(token, document.id()));
+    return document;
   }
 
   @Override

@@ -21,6 +21,14 @@ public interface Index {
   Document index(Text text);
 
   /**
+   * Indexes or reindex a document
+   *
+   * @param document The document
+   * @return The indexed document
+   */
+  Document index(Document document);
+
+  /**
    * Provides an indexed document given its id
    *
    * @param id The id
