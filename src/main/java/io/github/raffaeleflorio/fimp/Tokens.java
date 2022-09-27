@@ -42,7 +42,7 @@ public interface Tokens extends Iterable<String> {
     /**
      * Builds a fake using a collection of tokens
      *
-     * @param tokens The set
+     * @param tokens The collection
      */
     public Fake(final Collection<String> tokens) {
       this.tokens = tokens;
