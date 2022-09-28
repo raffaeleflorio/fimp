@@ -13,20 +13,11 @@ import java.util.UUID;
 public interface Index {
 
   /**
-   * Indexes a text
-   *
-   * @param text The text
-   * @return The indexed document
-   */
-  Document index(Text text);
-
-  /**
    * Indexes or reindex a document
    *
    * @param document The document
-   * @return The indexed document
    */
-  Document index(Document document);
+  void index(Document document);
 
   /**
    * Provides an indexed document given its id
@@ -35,14 +26,6 @@ public interface Index {
    * @return The document if indexed, otherwise empty
    */
   Optional<Document> document(UUID id);
-
-  /**
-   * Provides one or more indexed documents related a text
-   *
-   * @param text The text
-   * @return The documents
-   */
-  Documents documents(Text text);
 
   /**
    * Deletes a document given its id
