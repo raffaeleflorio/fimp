@@ -91,4 +91,16 @@ class InvertedIndexTest {
     assertThat(index.document(document.id()).map(Document::text).map(Text::asString))
       .contains(expected);
   }
+
+  @Test
+  void shouldProvide_DocumentsOnlyRelatedToAToken() {
+    var index = new InvertedIndex();
+
+    index.index(new Document.Fake(this.aDocumentId(), new Text.Fake("token")));
+    index.index(new Document.Fake(this.aDocumentId(), new Text.Fake("token")));
+    index.index(new Document.Fake(this.aDocumentId(), new Text.Fake("another token")));
+
+    assertThat(index.documents("token"))
+      .hasSize(2);
+  }
 }

@@ -20,14 +20,6 @@ public interface Index {
   void index(Document document);
 
   /**
-   * Provides an indexed document given its id
-   *
-   * @param id The id
-   * @return The document if indexed, otherwise empty
-   */
-  Optional<Document> document(UUID id);
-
-  /**
    * Deletes a document given its id
    *
    * @param id The id
@@ -40,4 +32,20 @@ public interface Index {
    * @return The size
    */
   Long size();
+
+  /**
+   * Provides an indexed document given its id
+   *
+   * @param id The id
+   * @return The document if indexed, otherwise empty
+   */
+  Optional<Document> document(UUID id);
+
+  /**
+   * Provides all indexed documents related to a token
+   *
+   * @param token The token
+   * @return The documents
+   */
+  Documents documents(String token);
 }
