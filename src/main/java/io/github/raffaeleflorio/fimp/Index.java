@@ -2,6 +2,7 @@ package io.github.raffaeleflorio.fimp;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Function;
 
 /**
  * An index
@@ -48,4 +49,76 @@ public interface Index {
    * @return The documents
    */
   Documents documents(String token);
+
+  /**
+   * An index useful for testing
+   *
+   * @author Raffaele Florio (raffaeleflorio@protonmail.com)
+   * @since 1.0.0
+   */
+  final class Fake implements Index {
+
+    private final Function<String, Documents> documentsFn;
+    private final Function<UUID, Optional<Document>> documentFn;
+    private final Long size;
+
+    /**
+     * Builds an empty fake
+     */
+    public Fake() {
+      this(token -> new Documents.Fake(), id -> Optional.empty(), 0L);
+    }
+
+
+    /**
+     * Builds a fake with a size of zero and unable to find document by id
+     *
+     * @param documentsFn The function to maps token to documents
+     */
+    public Fake(final Function<String, Documents> documentsFn) {
+      this(
+        documentsFn,
+        id -> Optional.empty(),
+        0L
+      );
+    }
+
+    /**
+     * Builds a fake
+     *
+     * @param documentsFn The function to maps token to documents
+     * @param documentFn  The function to map id to document
+     * @param size        The size
+     */
+    public Fake(final Function<String, Documents> documentsFn, final Function<UUID, Optional<Document>> documentFn, final Long size) {
+      this.documentsFn = documentsFn;
+      this.documentFn = documentFn;
+      this.size = size;
+    }
+
+    @Override
+    public void index(final Document document) {
+
+    }
+
+    @Override
+    public void delete(final UUID id) {
+
+    }
+
+    @Override
+    public Long size() {
+      return this.size;
+    }
+
+    @Override
+    public Optional<Document> document(final UUID id) {
+      return this.documentFn.apply(id);
+    }
+
+    @Override
+    public Documents documents(final String token) {
+      return this.documentsFn.apply(token);
+    }
+  }
 }
