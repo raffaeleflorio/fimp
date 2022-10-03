@@ -2,7 +2,7 @@ package io.github.raffaeleflorio.fimp.bool;
 
 import io.github.raffaeleflorio.fimp.Document;
 import io.github.raffaeleflorio.fimp.Documents;
-import io.github.raffaeleflorio.fimp.Index;
+import io.github.raffaeleflorio.fimp.InvertedIndex;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -13,7 +13,7 @@ class TermTest {
 
   @Test
   void shouldEvaluate_ToDocumentsRelated_TheTerm() {
-    var index = new Index.Fake(
+    var index = new InvertedIndex.Fake(
       token -> new Documents.Fake(
         List.of(
           new Document.Fake(),
@@ -30,7 +30,7 @@ class TermTest {
 
   @Test
   void shouldEvaluate_ToEmptyDocumentsWith_UnrelatedTerm() {
-    var index = new Index.Fake();
+    var index = new InvertedIndex.Fake();
 
     var term = new Term("any unrelated token");
 

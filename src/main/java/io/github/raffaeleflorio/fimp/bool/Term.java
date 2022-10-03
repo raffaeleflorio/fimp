@@ -2,7 +2,7 @@ package io.github.raffaeleflorio.fimp.bool;
 
 import io.github.raffaeleflorio.fimp.BoolQuery;
 import io.github.raffaeleflorio.fimp.Documents;
-import io.github.raffaeleflorio.fimp.Index;
+import io.github.raffaeleflorio.fimp.InvertedIndex;
 
 /**
  * A term query
@@ -24,7 +24,7 @@ public final class Term implements BoolQuery {
   }
 
   @Override
-  public Documents evaluated(final Index index) {
-    return index.documents(this.term);
+  public Documents evaluated(final InvertedIndex invertedIndex) {
+    return invertedIndex.documents(this.term);
   }
 }

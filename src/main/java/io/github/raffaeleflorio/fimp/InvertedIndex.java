@@ -8,10 +8,10 @@ import java.util.function.Function;
  * An index
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
- * @see <a href="https://en.wikipedia.org/wiki/Search_engine_indexing#Index_data_structures">Wikipedia about search index</a>
+ * @see <a href="https://en.wikipedia.org/wiki/Inverted_index">Wikipedia about inverted index</a>
  * @since 1.0.0
  */
-public interface Index {
+public interface InvertedIndex {
 
   /**
    * Indexes or reindex a document
@@ -56,7 +56,7 @@ public interface Index {
    * @author Raffaele Florio (raffaeleflorio@protonmail.com)
    * @since 1.0.0
    */
-  final class Fake implements Index {
+  final class Fake implements InvertedIndex {
 
     private final Function<String, Documents> documentsFn;
     private final Function<UUID, Optional<Document>> documentFn;

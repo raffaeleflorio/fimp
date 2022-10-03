@@ -12,8 +12,8 @@ public interface BoolQuery {
   /**
    * Evaluates itself to a set of documents given an index
    *
-   * @param index The index
+   * @param invertedIndex The index
    * @return The documents
    */
-  Documents evaluated(Index index);
+  Documents evaluated(InvertedIndex invertedIndex);
 }

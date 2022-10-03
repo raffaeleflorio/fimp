@@ -3,17 +3,18 @@ package io.github.raffaeleflorio.fimp.inverted;
 import io.github.raffaeleflorio.fimp.Document;
 import io.github.raffaeleflorio.fimp.Text;
 import io.github.raffaeleflorio.fimp.Tokens;
+import io.github.raffaeleflorio.fimp.simple.InMemoryInvertedIndex;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class InvertedIndexTest {
+class InMemoryInvertedIndexTest {
 
   @Test
   void shouldNotProvide_AnUnindexedDocument() {
-    assertThat(new InvertedIndex().document(this.aDocumentId()))
+    assertThat(new InMemoryInvertedIndex().document(this.aDocumentId()))
       .isEmpty();
   }
 
@@ -23,7 +24,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldProvide_AnIndexedDocument() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
     var document = new Document.Fake();
 
     index.index(document);
@@ -34,7 +35,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldNotProvide_AnIndexedDocument_ByAnotherId() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
 
     index.index(new Document.Fake(this.aDocumentId()));
 
@@ -44,7 +45,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldNotProvide_AnIndexedDocument_AfterDeletion() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
     var document = new Document.Fake();
 
     index.index(document);
@@ -56,7 +57,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldEstimate_Size_According_IndexedDocuments() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
 
     index.index(new Document.Fake());
     index.index(new Document.Fake());
@@ -69,7 +70,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldProvide_AReindexedDocument() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
     var document = new Document.Fake(this.aDocumentId(), new Text.Fake("old"));
 
     index.index(document);
@@ -81,7 +82,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldProvide_CorrectTextOfAReindexedDocument() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
     var document = new Document.Fake();
     var expected = "new";
 
@@ -94,7 +95,7 @@ class InvertedIndexTest {
 
   @Test
   void shouldProvide_DocumentsOnlyRelatedToAToken() {
-    var index = new InvertedIndex();
+    var index = new InMemoryInvertedIndex();
 
     index.index(new Document.Fake(this.aDocumentId(), new Text.Fake("token")));
     index.index(new Document.Fake(this.aDocumentId(), new Text.Fake("token")));

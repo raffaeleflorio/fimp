@@ -1,11 +1,10 @@
-package io.github.raffaeleflorio.fimp.inverted;
+package io.github.raffaeleflorio.fimp.simple;
 
 import io.github.raffaeleflorio.fimp.Document;
 import io.github.raffaeleflorio.fimp.Documents;
-import io.github.raffaeleflorio.fimp.Index;
+import io.github.raffaeleflorio.fimp.InvertedIndex;
 import io.github.raffaeleflorio.fimp.multivaluemap.ConcurrentMultiValueMap;
 import io.github.raffaeleflorio.fimp.multivaluemap.JdkConcurrentMultiValueMap;
-import io.github.raffaeleflorio.fimp.simple.ConstDocuments;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -17,10 +16,9 @@ import java.util.stream.Collector;
  * An in-memory inverted index
  *
  * @author Raffaele Florio (raffaeleflorio@protonmail.com)
- * @see <a href="https://en.wikipedia.org/wiki/Inverted_index">Wikipedia about inverted index</a>
  * @since 1.0.0
  */
-public final class InvertedIndex implements Index {
+public final class InMemoryInvertedIndex implements InvertedIndex {
 
   private final ConcurrentMap<UUID, Document> documentsMap;
   private final ConcurrentMultiValueMap<String, UUID> tokensMap;
@@ -29,7 +27,7 @@ public final class InvertedIndex implements Index {
   /**
    * Builds an empty inverted index
    */
-  public InvertedIndex() {
+  public InMemoryInvertedIndex() {
     this(
       new ConcurrentHashMap<>(),
       new JdkConcurrentMultiValueMap<>(),
@@ -47,7 +45,7 @@ public final class InvertedIndex implements Index {
     );
   }
 
-  InvertedIndex(
+  InMemoryInvertedIndex(
     final ConcurrentMap<UUID, Document> documentsMap,
     final ConcurrentMultiValueMap<String, UUID> tokensMap,
     final Collector<Optional<Document>, ConcurrentMap<UUID, Document>, Documents> documentsCollector
