@@ -1,10 +1,11 @@
-package io.github.raffaeleflorio.fimp.simple;
+package io.github.raffaeleflorio.fimp.inverted;
 
 import io.github.raffaeleflorio.fimp.Document;
 import io.github.raffaeleflorio.fimp.Documents;
 import io.github.raffaeleflorio.fimp.InvertedIndex;
 import io.github.raffaeleflorio.fimp.multivaluemap.ConcurrentMultiValueMap;
 import io.github.raffaeleflorio.fimp.multivaluemap.JdkConcurrentMultiValueMap;
+import io.github.raffaeleflorio.fimp.simple.ConstDocuments;
 
 import java.util.Optional;
 import java.util.UUID;

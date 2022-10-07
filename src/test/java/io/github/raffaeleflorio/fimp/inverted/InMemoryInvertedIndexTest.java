@@ -3,7 +3,6 @@ package io.github.raffaeleflorio.fimp.inverted;
 import io.github.raffaeleflorio.fimp.Document;
 import io.github.raffaeleflorio.fimp.Text;
 import io.github.raffaeleflorio.fimp.Tokens;
-import io.github.raffaeleflorio.fimp.simple.InMemoryInvertedIndex;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
