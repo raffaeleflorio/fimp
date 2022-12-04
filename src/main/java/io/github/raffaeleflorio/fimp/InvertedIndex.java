@@ -11,9 +11,9 @@ package io.github.raffaeleflorio.fimp;
 public interface InvertedIndex {
 
   /**
-   * Indexed a document
+   * Indexes a document
    *
-   * @param document The document
+   * @param document The document to index
    */
   void index(Document document);
 
