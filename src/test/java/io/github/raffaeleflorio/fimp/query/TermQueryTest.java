@@ -46,10 +46,10 @@ class TermQueryTest {
     void evaluates_itself_to_all_documents_in_the_inverted_index_containing_the_term() {
       var term = new Term.Stub("a term");
       var documents = new Documents.Stub(
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments()
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
       );
       var invertedIndex = new InvertedIndex.Stub(documents);
 
@@ -57,7 +57,7 @@ class TermQueryTest {
         .isEqualTo(documents);
     }
 
-    private Set<Document> aSetOfDocuments() {
+    private Iterable<Document> anIterableOfDocument() {
       return Set.of();
     }
   }

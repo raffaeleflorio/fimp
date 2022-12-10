@@ -17,17 +17,17 @@ class InvertedIndexTest {
     @Test
     void provides_the_stubbed_documents_regardless_the_term() {
       var documents = new Documents.Stub(
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments()
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
       );
 
       assertThat(new InvertedIndex.Stub(documents).documents(this.aTerm()))
         .isEqualTo(documents);
     }
 
-    private Set<Document> aSetOfDocuments() {
+    private Iterable<Document> anIterableOfDocument() {
       return Set.of();
     }
 
@@ -42,10 +42,10 @@ class InvertedIndexTest {
     @Test
     void indexes_does_not_change_stubbed_documents() {
       var documents = new Documents.Stub(
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments()
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
       );
       var invertedIndex = new InvertedIndex.Stub(documents);
 

@@ -16,17 +16,17 @@ class BooleanQueryTest {
     @Test
     void provides_the_stubbed_evaluation_result_regardless_the_invertedIndex() {
       var evaluated = new Documents.Stub(
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments()
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
       );
 
       assertThat(new BooleanQuery.Stub(evaluated, this.aDescription()).evaluated(this.anInvertedIndex()))
         .isEqualTo(evaluated);
     }
 
-    private Set<Document> aSetOfDocuments() {
+    private Iterable<Document> anIterableOfDocument() {
       return Set.of();
     }
 
@@ -36,10 +36,10 @@ class BooleanQueryTest {
 
     private Documents aDocuments() {
       return new Documents.Stub(
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments()
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
       );
     }
 

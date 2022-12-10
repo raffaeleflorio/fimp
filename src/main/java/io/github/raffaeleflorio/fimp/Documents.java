@@ -1,7 +1,6 @@
 package io.github.raffaeleflorio.fimp;
 
 import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Set of {@link Document}, where each document is identified by its id
@@ -37,22 +36,22 @@ public interface Documents extends Iterable<Document> {
    */
   final class Stub implements Documents {
 
-    private final Set<Document> documents;
-    private final Set<Document> union;
-    private final Set<Document> intersection;
-    private final Set<Document> difference;
+    private final Iterable<Document> documents;
+    private final Iterable<Document> union;
+    private final Iterable<Document> intersection;
+    private final Iterable<Document> difference;
 
     /**
-     * @param documents    The set of documents
+     * @param documents    The documents
      * @param union        The union
      * @param intersection The intersection
      * @param difference   The difference
      */
     public Stub(
-      final Set<Document> documents,
-      final Set<Document> union,
-      final Set<Document> intersection,
-      final Set<Document> difference
+      final Iterable<Document> documents,
+      final Iterable<Document> union,
+      final Iterable<Document> intersection,
+      final Iterable<Document> difference
     ) {
       this.documents = documents;
       this.union = union;

@@ -19,8 +19,14 @@ class DocumentsTest {
         this.aDocument(),
         this.aDocument()
       );
+      var stub = new Documents.Stub(
+        documents,
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
+      );
 
-      assertThat(new Documents.Stub(documents, this.aSetOfDocuments(), this.aSetOfDocuments(), this.aSetOfDocuments()))
+      assertThat(stub)
         .containsExactlyElementsOf(documents);
     }
 
@@ -40,7 +46,7 @@ class DocumentsTest {
       return UUID.randomUUID().toString();
     }
 
-    private Set<Document> aSetOfDocuments() {
+    private Iterable<Document> anIterableOfDocument() {
       return Set.of();
     }
 
@@ -51,18 +57,23 @@ class DocumentsTest {
         this.aDocument(),
         this.aDocument()
       );
+      var stub = new Documents.Stub(
+        this.anIterableOfDocument(),
+        union,
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
+      );
 
-      assertThat(new Documents.Stub(this.aSetOfDocuments(), union, this.aSetOfDocuments(), this.aSetOfDocuments())
-        .union(this.aDocuments())
-      ).containsExactlyElementsOf(union);
+      assertThat(stub.union(this.aDocuments()))
+        .containsExactlyElementsOf(union);
     }
 
     private Documents aDocuments() {
       return new Documents.Stub(
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments(),
-        this.aSetOfDocuments()
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument()
       );
     }
 
@@ -71,10 +82,15 @@ class DocumentsTest {
       var intersection = Set.of(
         this.aDocument()
       );
+      var stub = new Documents.Stub(
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        intersection,
+        this.anIterableOfDocument()
+      );
 
-      assertThat(new Documents.Stub(this.aSetOfDocuments(), this.aSetOfDocuments(), intersection, this.aSetOfDocuments())
-        .intersection(this.aDocuments())
-      ).containsExactlyElementsOf(intersection);
+      assertThat(stub.intersection(this.aDocuments()))
+        .containsExactlyElementsOf(intersection);
     }
 
     @Test
@@ -85,10 +101,15 @@ class DocumentsTest {
         this.aDocument(),
         this.aDocument()
       );
+      var stub = new Documents.Stub(
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        this.anIterableOfDocument(),
+        difference
+      );
 
-      assertThat(new Documents.Stub(this.aSetOfDocuments(), this.aSetOfDocuments(), this.aSetOfDocuments(), difference)
-        .difference(this.aDocuments())
-      ).containsExactlyElementsOf(difference);
+      assertThat(stub.difference(this.aDocuments()))
+        .containsExactlyElementsOf(difference);
     }
   }
 }
